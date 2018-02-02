@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Datatable-serverSide 自行封装请求参数和返回数据例子</title>
+<script type="text/javascript" src='jquery.js'></script>
+<script type="text/javascript" src='laydate/laydate.js'></script>
+
+<style type="text/css">
+
+</style>
+</head>
+<body>
+    <div>
+    	<label>创建日期:</label><input type="text"  class="ex_input w300" id="query_date"  readonly/>
+    </div>
+    <script type="text/javascript">
+       function renderDate(ele){
+          laydate.render({
+            elem: ele,
+            type : 'datetime',
+            range: true,
+            format : 'yyyy-MM-dd HH:mm:ss',
+            done : function (value) {
+                var _temp = value.split('-');
+                var create_dates = _temp[0]+'-'+_temp[1]+'-'+_temp[2];
+                if(_temp[3]){
+                    _temp[3] = _temp[3].replace(/\s+/g,'')
+                }
+                 var create_datee = _temp[3] + _temp[4] + _temp[5];
+                 console.log('create_dates',create_dates)
+                 console.log('create_datee',create_datee)
+            }
+        });
+
+       } 
+    	window.onload = function(){
+          renderDate('#query_date')
+    	}
+    </script>
+</body>
+</html>
